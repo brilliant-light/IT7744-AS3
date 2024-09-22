@@ -1,0 +1,17 @@
+title = "Account"
+layout = "default"
+url = "/account"
+==
+title = "User Account"
+url = "/account"
+
+[session]
+security = "user"
+
+[account]
+
+
+<h1>Welcome, {{ user.name }}</h1>
+<p>Email: {{ user.email }}</p>
+
+<a href="{{ 'logout'|page }}">Logout</a>

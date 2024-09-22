@@ -1,0 +1,26 @@
+url = "/login"
+layout = "default"
+title = "Login"
+
+[account]
+==
+title = "Login"
+url = "/login"
+layout = "default"
+is_hidden = 0
+
+<h2>Login</h2>
+<form data-request="onSignin">
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" required>
+
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" required>
+
+    <label for="remember">Remember me:</label>
+    <input type="checkbox" name="remember" id="remember">
+
+    <button type="submit">Login</button>
+</form>
+
+{% component 'account' %}

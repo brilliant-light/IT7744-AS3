@@ -1,0 +1,43 @@
+url = "/contact"
+layout = "default"
+title = "Register"
+meta_title = "Get in touch!"
+
+[resources]
+less[] = "pages/contact.less"
+vars[activeNavLink] = "contact"
+vars[blueFooterStyle] = 1
+
+[account]
+==
+title = "Register"
+url = "/register"
+layout = "default"
+is_hidden = 0
+
+<h2>Register</h2>
+<form data-request="onRegister">
+    <label for="first_name">First Name</label>
+    <input type="text" id="first_name" name="first_name" required>
+	
+	<input type="text" name="username" placeholder="Username" required>
+
+	<label for="email">Full name</label>
+	<input type="text" name="name" placeholder="Full Name" required>
+
+
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" required>
+
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" required>
+
+    <label for="password_confirmation">Confirm Password:</label>
+    <input type="password" name="password_confirmation" id="password_confirmation" required>
+
+    <button type="submit">Register</button>
+</form>
+
+<div id="result"></div>
+
+{% component 'account' %}

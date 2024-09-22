@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        .image-gallery img {
+            max-width: 200px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Images</h1>
+    <div id="user-images" class="image-gallery"></div>
+
+    <h1>Other Users' Images</h1>
+    <div id="other-users-images" class="image-gallery"></div>
+
+    <h1>Latest Images</h1>
+    <div id="latest-images" class="image-gallery"></div>
+
+    <script>
+        // Helper function to sanitize image file paths before inserting into HTML
+        function sanitizeImagePath(imagePath) {
+            const div = document.createElement('div');
+            div.textContent = imagePath;  // Prevent any potential script injection
+            return div.innerHTML;  // Return safe, sanitized string
+        }
+
+        // Function to fetch images securely
+        function fetchImages(endpoint, targetDivId) {
+            fetch(endpoint)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(images => {
+                    const targetDiv = document.getElementById(targetDivId);
+                    targetDiv.innerHTML = ''; // Clear any existing content
+                    images.forEach(image => {
+                        const imgElement = document.createElement('img');
+                        imgElement.src = `/storage/${sanitizeImagePath(image.file_path)}`;  // Sanitize path before using it
+                        targetDiv.appendChild(imgElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching images:', error);  // Log the error for debugging
+                });
+        }
+
+        // Fetch and display user's own images securely
+        fetchImages('/user/images', 'user-images');
+
+        // Fetch and display images from other users securely
+        fetchImages('/other-users/images', 'other-users-images');
+
+        // Fetch and display the latest images securely
+        fetchImages('/latest/images', 'latest-images');
+    </script>
+</body>
+</html>
