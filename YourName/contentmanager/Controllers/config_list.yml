@@ -1,0 +1,6 @@
+columns:
+    title:
+        label: Title
+        searchable: true
+    created_at:
+        label: Created

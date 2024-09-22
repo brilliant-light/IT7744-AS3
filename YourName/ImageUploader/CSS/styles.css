@@ -1,0 +1,57 @@
+// Image gallery styles
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    img {
+        max-width: 200px;
+        margin: 10px;
+        border-radius: 5px;
+        transition: transform 0.3s ease-in-out;
+
+        // Hover effect
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+}
+
+// Form styles for uploading images
+.image-upload-form {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    input[type="file"] {
+        margin-bottom: 20px;
+    }
+
+    button {
+        @include button-styles(blue, white);
+    }
+}
+
+// Reusable button styles mixin
+@mixin button-styles($bg-color, $text-color) {
+    background-color: $bg-color;
+    color: $text-color;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}

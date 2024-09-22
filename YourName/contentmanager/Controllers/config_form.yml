@@ -1,0 +1,9 @@
+fields:
+    title:
+        label: Title
+        type: text
+        span: full
+    body:
+        label: Content
+        type: textarea
+        span: full
